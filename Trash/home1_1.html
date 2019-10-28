@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title></title>
+        <style >
+            *{
+                padding: 0;
+                margin: 0;
+            }
+
+            section{
+                height: 100vh;
+                background: url("../public/assets/images/background.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .contents{
+                text-align: center;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                z-index: 2;
+                transform: translate(-50%,-50%);
+            }
+
+            .dyuksha20{
+                -webkit-filter: drop-shadow(2px 2px 5px #222);
+                filter:         drop-shadow(2px 2px 5px #222);
+                position: relative;
+                width: 420px;
+            }
+            .dyukshalogo{
+                -webkit-filter: drop-shadow(2px 2px 5px #222);
+                filter:         drop-shadow(2px 2px 5px #222);
+                position: relative;
+                width: 350px;
+            }
+            canvas {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 10;
+                width :100vw;
+                height:100vh;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="wrap">
+                <div class="helper"></div>
+                <canvas id="canvas1" ></canvas>
+            </div>
+            <div class="contents">
+                <img src="../public/assets/images/logo.svg" alt="logo" class="dyukshalogo">
+                <h6></h6>
+                <img src="../public/assets/images/dyuksha.svg" alt="text" class="dyuksha20" width="300px">
+                <h1>Great Things are Coming</h1>
+                <div class="counter">
+
+                </div>
+            </div>
+        </section>
+        <script type="text/javascript">
+            var element = document.getElementById("canvas1"),
+                c = element.getContext("2d"),
+                width = element.width ,
+                height = element.height,
+                imageData = c.createImageData(width, height);
+
+            function setPixel(imageData, x, y, r, g, b, a) {
+                index = (x + y * imageData.width) * 4;
+                imageData.data[index + 0] = r;
+                imageData.data[index + 1] = g;
+                imageData.data[index + 2] = b;
+                imageData.data[index + 3] = a;
+            }
+
+            function draw() {
+                for (i = 0; i < 10000; i++) {
+                    x = Math.random() * width | 0;
+                    y = Math.random() * height | 0;
+                    b = Math.random() * 256 | 0;
+                    setPixel(imageData, x, y, b, b, b, 15);
+                }
+                c.putImageData(imageData, 0, 0);
+            }
+
+            function render() {
+                requestAnimationFrame(render);
+                draw();
+            }
+
+            render();
+        </script>
+    </body>
+</html>

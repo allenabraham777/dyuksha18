@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gyro</title>
+  <style>
+  html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  position: relative;
+  background: url(http://getbg.net/upload/full/www.GetBg.net_Space__039564_.jpg) center center no-repeat rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+  padding: 20px;
+}
+
+#moon {
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 120px;
+  /* top: 20%; */
+  left: 50%;
+  /* margin-left: -60px; */
+  /* border-radius: 50%; */
+  /* box-shadow: 0 0 30px 0 rgba(255, 255, 255, 0.5); */
+  transition: all .1s linear;
+  z-index: 20;
+}
+#moon img {
+  width: 120px;
+  height: 120px;
+  /* transform: rotate(220deg); */
+}
+
+#earth {
+  position: absolute;
+  display: block;
+  width: 240px;
+  height: 240px;
+  top: 15%;
+  left: 50%;
+  margin-left: -120px;
+  border-radius: 50%;
+  transition: all .2s linear;
+  z-index: 10;
+}
+#earth img {
+  width: 240px;
+  height: 240px;
+}
+
+  </style>
+</head>
+<body>
+  <div id="moon">
+   
+  </div>
+  <div id="earth">
+    <img src="../public/assets/images/logo.svg">
+    <img src="../public/assets/images/dyuksha.svg">
+  </div>
+  <script>
+  var moon  = document.getElementById("moon");
+var earth  = document.getElementById("earth");
+
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+}
+
+var deviceOrientationData;
+
+function deviceOrientationHandler(e) {
+  deviceOrientationData = e;  
+  
+  moon.style.webkitTransform = "translate("+ e.gamma/2 +"px," + e.beta/2 + "px)";
+  moon.style.transform = "translate("+ e.gamma/2 +"px," + e.beta/2 + "px)";
+  
+  earth.style.webkitTransform = "translate("+ e.gamma/4 +"px," + e.beta/4 + "px)";
+  earth.style.transform = "translate("+ e.gamma/4 +"px," + e.beta/4 + "px)";
+  
+  console.log(e.alpha + ' : ' + e.beta + ' : ' + e.gamma);
+};
+  </script>
+</body>
+</html>
+
+
+<script type="text/javascript">
+  var clock;
+
+  $(document).ready(function() {
+      // Set dates.
+      var futureDate  = new Date("January 1, 2020 12:00 PM GMT+5:30");
+      var currentDate = new Date();
+
+      // Calculate the difference in seconds between the future and current date
+      var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+      // Calculate day difference and apply class to .clock for extra digit styling.
+      function dayDiff(first, second) {
+          return (second-first)/(1000*60*60*24);
+      }
+
+      if (dayDiff(currentDate, futureDate) < 100) {
+          $('.clock').addClass('twoDayDigits');
+      } else {
+          $('.clock').addClass('threeDayDigits');
+      }
+
+ s     if(diff < 0) {
+          diff = 0;
+      }
+
+      // Instantiate a coutdown FlipClock
+      clock = $('.clock').FlipClock(diff, {
+          clockFace: 'DailyCounter',
+          countdown: true
+      });
+  });
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+    <head>
+        <html lang="en" dir="ltr">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            /*
+Street Fighter countdown style
+Aitor Porro
+@lastpotion
+
+Based on a Joan Leon(@nucliweb) pen:
+https://codepen.sdio/nucliweb/pen/doJXwM
+*/
+/************
+* Imports
+*************/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300);
+@import url(https://fonts.googleapis.com/css?family=Oswald|VT323);
+/************
+* Variables
+*************/
+/* Colors */
+body {
+background-color: #1A1A1A;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+.continue {
+width: 100%;
+height: 150px;
+display: inline-block;
+font-family: 'VT323';
+font-size: 3.5em;
+text-transform: uppercase;
+margin-left: 5%;
+}
+.continue p {
+margin: 2% 0;
+background-image: -webkit-linear-gradient(#ff6500, #b30013);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+color: #ff6500;
+position: relative;
+display: inline-block;
+}
+.continue p:after {
+background: none;
+content: attr(data-text);
+left: 0;
+position: absolute;
+text-shadow: 3px 3px 2px #00258c;
+top: 0;
+z-index: -1;
+}
+.continue p.pull-right {
+position: absolute;
+top: 0;
+right: 10%;
+}
+
+
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="countdown" style="margin-left:125px;"></div>
+            <div class="countdown" style="margin-left:-44px;"></div>
+            <div class="countdown" style="margin-left:-48px;"></div>
+            <div class="countdown" style="margin-left:-44px;"></div>
+            <div class="countdown" style="margin-left:-48px;"></div>
+            <div class="countdown" style="margin-left:-44px;"></div>
+            <div class="countdown" style="margin-left:-48px;"></div>
+            <div class="countdown" style="margin-left:-44px;"></div>
+        </div>
+    </body>
+</html>

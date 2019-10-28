@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    
+    div:before{
+    content:"";
+    position: absolute;
+    height: 250vh;
+    width: 250vw;
+    background:url(../../public/assets/images/background.jpg) no-repeat;
+    background-size:cover;
+    margin-left: -75vw;
+    margin-top: -75vh;
+    background-position: center;
+    border:1px solid #000;
+    transform-origin: 125vw 125vh;
+    animation:spin 400s linear infinite;
+}
+
+@keyframes spin{
+	from{transform:rotate(0deg)}
+	to{transform:rotate(360deg)}	
+}
+
+</style>
+<body>
+    <div></div>
+</body>
+</html>
